@@ -26,7 +26,7 @@
 </div> 
      </header>
      <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="form-register">
-     <h2 class="form-titulo">Iniciar Sesion</h2>
+     <h2 class="form-titulo">Iniciar Sesión</h2>
      <div class="contenedor-inputs">
      <label for="email" class="labels-name">E-mail</label>
      <input type="email" name="email" placeholder="Email"class="input-100">

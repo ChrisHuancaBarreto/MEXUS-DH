@@ -59,7 +59,7 @@
             <a class="hvr-float nav-link" href="productos.php#Consolas"><i class="fas fa-gamepad"></i> Consolas</a>
         </li>
         <li class="nav-item active">
-            <a class="hvr-float nav-link" href="productos.php#Televisores"><i class="fas fa-tv"></i> televisores</a>
+            <a class="hvr-float nav-link" href="productos.php#Televisores"><i class="fas fa-tv"></i> Televisores</a>
         </li>
         <li class="nav-item active">
             <a class="hvr-float nav-link" href="productos.php#Celulares"><i class="fas fa-mobile-alt"></i> Celulares</a>
@@ -75,7 +75,7 @@
             <h5><i class="fas fa-user"></i> Acceder</h5>
           </button>
           <div class="dropdown-menu" style="background: black;z-index: auto;" aria-labelledby="dropdownMenuButton" >
-            <a class="dropdown-item" style="color: white;background: transparent;" href="login.php">Iniciar Sesion</a>
+            <a class="dropdown-item" style="color: white;background: transparent;" href="login.php">Iniciar Sesión</a>
             <a class="dropdown-item" style="color:white; background: transparent;" href="register.php">Registrarse</a>
           </div>
       </div>  
@@ -364,7 +364,7 @@
                   <div class="col-md-4"> 
                       <h5>MeXus</h5>
                       <a href="nosotros.php#QuienesSomos">
-                            <p>Quienes Somos?</p>
+                            <p>¿Quiénes Somos?</p>
                       </a>
                       <a href="nosotros.php#Ayuda">
                           <p>Ayuda</p>
