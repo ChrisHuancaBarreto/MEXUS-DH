@@ -1,8 +1,8 @@
 <header class="header navbar sticky-top">
 <div class="logo">
         <a class="hvr-wobble-to-bottom-right" href="index.php"><h1>MeXus</h1></a>
-</div>  
-    
+</div>
+
 <div class="buscador">
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Search">
@@ -35,13 +35,13 @@
                  Buscar
                 </button>
               </span>
-            </div> 
+            </div>
         </div>
       </div>
     </div>
 </div>
-    
-    
+
+
  <!--- buscar tablet-celular -->
 
 <div class="dropdown" id="sesion">
@@ -49,8 +49,8 @@
               <h5><i class="fas fa-user"></i> Acceder</h5>
             </button>
             <div class="dropdown-menu" style="background: black;z-index: auto;" aria-labelledby="dropdownMenuButton" >
-              <a class="dropdown-item" style="color:white; background: transparent;" href="register.php">Registrarse</a>
               <a class="dropdown-item" style="color:white; background: transparent;" href="login.php">Iniciar Sesión</a>
+              <a class="dropdown-item" style="color:white; background: transparent;" href="register.php">Registrarse</a>
             </div>
 </div>
 

@@ -19,7 +19,7 @@
 <header class="header" style="z-index: auto;">
                 <div class="logo">
                     <a class="hvr-wobble-to-bottom-right" href="index.php"><h1>MeXus</h1></a>
-                </div>    
+                </div>
 <div class="buscador">
   <form class="form-inline my-2 my-lg-0">
    <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Search">
@@ -28,7 +28,7 @@
     <!--- buscar tablet-celular -->
 <button id="buscador_mobil" class="btn btn-outline my-2 my-sm-0 hvr-grow-shadow" data-toggle="modal" data-target="#buscador" type="submit"><i class="fas fa-search" style="color:white;font-size=20px"></i></button>
 
-                </div>                       
+                </div>
                 <div class="redes">
                   <a href="#"><i class="fab fa-facebook hvr-float"></i></a>
                   <a href="#"><i class="fab fa-twitter hvr-float"></i></a>
@@ -69,7 +69,7 @@
         </li>
 
       </ul>
-        
+
       <div class="dropdown">
           <button class="dropdown-toggle ingresar hvr-bounce-in boton"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <h5><i class="fas fa-user"></i> Acceder</h5>
@@ -78,7 +78,7 @@
             <a class="dropdown-item" style="color: white;background: transparent;" href="login.php">Iniciar Sesión</a>
             <a class="dropdown-item" style="color:white; background: transparent;" href="register.php">Registrarse</a>
           </div>
-      </div>  
+      </div>
     </div>
 </nav>
 
@@ -117,14 +117,14 @@
             <span class="sr-only">Next</span>
         </a>
 </div>
-    
+
 
 <section>
  <!-- PRODUCTOS ---------------------------------------------------------------->
  <h2>COMPUTADORAS </h2>
 <!-- Computadoras-->
 <div class="container-fluid listaProductos">
-    <a name="Computadoras"></a>    
+    <a name="Computadoras"></a>
     <div class="row">
       <div class="col-sm-6 col-md-3 producto">
             <div class="card" style="width: auto;">
@@ -182,7 +182,7 @@
 <!-- Consolas -->
 <h2>CONSOLAS </h2>
 <div class="container-fluid listaProductos">
-    <a name="Consolas"></a>    
+    <a name="Consolas"></a>
         <div class="row">
           <div class="col-sm-6 col-md-3 producto">
                 <div class="card" style="width: auto;">
@@ -216,7 +216,7 @@
                           <h3 style="background: transparent;color: blue;">$45.000</h3>
                           <p class="card-text">Pc Armada Intel I7 8700 Ddr4 8g 1tb Gtx 1650 4gb Gamer Win10</p>
                           <a href="#" class="btn btn-primary">Comprar</a>
-                          <a href="#" class="btn btn-primary">Ver</a>
+                          <a href="descripcion.php" class="btn btn-primary">Ver</a>
                         </div>
                  </div>
           </div>
@@ -233,14 +233,14 @@
                  </div>
           </div>
         </div>
-    
+
 </div>
 <!-- /Consolas -->
 
 <!-- Televisores -->
 <h2>TELEVISORES </h2>
 <div class="container-fluid listaProductos">
-       <a name="Televisores"></a>    
+       <a name="Televisores"></a>
         <div class="row">
           <div class="col-sm-6 col-md-3 producto">
                 <div class="card" style="width: auto;">
@@ -291,14 +291,14 @@
                  </div>
           </div>
         </div>
-    
+
 </div>
 <!-- /Televisores -->
 
 <!-- Celulares -->
 <h2>CELULARES </h2>
-<div class="container-fluid listaProductos">   
-        <a name="Celulares"></a>   
+<div class="container-fluid listaProductos">
+        <a name="Celulares"></a>
         <div class="row">
           <div class="col-sm-6 col-md-3 producto">
                 <div class="card" style="width: auto;">
@@ -349,7 +349,7 @@
                  </div>
           </div>
         </div>
-    
+
 </div>
 <!-- /Celulares -->
 
@@ -361,7 +361,7 @@
 <footer>
         <div class="container-fluid" >
                 <div class="row" style="text-align: center;padding: 80px;" >
-                  <div class="col-md-4"> 
+                  <div class="col-md-4">
                       <h5>MeXus</h5>
                       <a href="nosotros.php#QuienesSomos">
                             <p>¿Quiénes Somos?</p>
@@ -373,7 +373,7 @@
                             <p>Contacto</p>
                       </a>
                   </div>
-        
+
                   <div class="col-md-4" >
                         <h5 class="title">Recibir Novedades</h5>
                         <form>
@@ -383,9 +383,9 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Enviar</button>
                         </form>
-        
+
                   </div>
-        
+
                   <div class="col-md-4" >
                       <h5>Contacto</h5>
                         <p>MeXus</p>
@@ -403,11 +403,11 @@
 
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
 </body>
