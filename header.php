@@ -1,3 +1,18 @@
+<?php session_start();
+
+if(isset($_SESSION["user_id"])){ //Si no ha iniciado sesión redirecciona a index.php
+  include 'clases/BaseDeDatos.php';
+  include 'clases/Usuario.php';
+  
+  $bd = new BaseDeDatos();
+  $usuario = $bd->traerUsuario($_SESSION["user_id"]);
+}
+
+
+?>
+
+
+
 <header class="header" style="z-index: auto;">
                 <div class="logo">
                     <a class="hvr-wobble-to-bottom-right" href="index.php"><h1>MeXus</h1></a>
@@ -16,6 +31,7 @@
                   <a href="#"><i class="fa fa-shopping-cart hvr-float data-toggle="tooltip" data-placement="left" title="Debe iniciar sesion"></i></a>
                 </div>
 </header>
+
 <nav id="nav-cel" class="navbar navbar-expand-lg navbar sticky-top p-0">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categorias" aria-controls="categorias" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fas fa-bars" style="color: white;"></i>
@@ -44,8 +60,22 @@
         </li>
 
       </ul>
+   
+      <?php if(isset($_SESSION["user_id"])): ?>
+  <div class="dropdown">
+          <button class="dropdown-toggle ingresar hvr-bounce-in boton"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <h5><i class="fas fa-user"></i> <?= $usuario["nombre_completo"]?> </h5>
+          </button>
+          <div class="dropdown-menu" style="background: black;z-index: auto;" aria-labelledby="dropdownMenuButton" >
+            <a class="dropdown-item" style="color: white;background: transparent;" href="miPerfil.php">Mi cuenta</a>
+            <a class="dropdown-item" style="color:white; background: transparent;" href="cerrarSesion.php">Salir</a>
+          </div>
+      </div>
+     </div>
 
-      <div class="dropdown">
+
+<?php else: ?>
+  <div class="dropdown">
           <button class="dropdown-toggle ingresar hvr-bounce-in boton"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <h5><i class="fas fa-user"></i> Acceder</h5>
           </button>
@@ -54,5 +84,16 @@
             <a class="dropdown-item" style="color:white; background: transparent;" href="register.php">Registrarse</a>
           </div>
       </div>
-    </div>
+     </div>
+
+<?php endif; ?>
+
+
 </nav>
+
+
+
+
+
+
+

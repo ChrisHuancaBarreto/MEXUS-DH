@@ -1,49 +1,68 @@
 <?php
  $errores=array();
  $nombre="";
- $apellido="";
+ $usuario="";
  $email="";
+ include 'clases/Usuario.php';
+ include 'clases/Validador.php';
 
-if(isset($_POST['submit'])){
+if($_POST){
     $nombre=$_POST["nombre"];
-    $apellido=$_POST["apellido"];
+    $usuario=$_POST["usuario"];
     $email=$_POST["email"];
     $contraseña=$_POST["password"];
     $contraseña2=$_POST["password-verify"];
       /* nombre */
-    if(!empty($nombre)){ // si la variable nombre no esta vacia aplico filtros 
-        $nombre = filter_var($nombre,FILTER_SANITIZE_STRING); // aplica filtro (remover signos y caracteres especiales)
-    } else { // si la variable nombre esta vacia 
+    if(empty($nombre)){ // si la variable nombre no esta vacia aplico filtros 
         $errores["nombre"]= "Por favor ingresa un nombre";
-    }
-      /* apellido */
-      if(!empty($apellido)){ // si la variable apellido no esta vacia aplico filtros 
-        $apellido = filter_var($apellido,FILTER_SANITIZE_STRING); // aplica filtro (remover signos y caracteres especiales)
-    } else { // si la variable apellido esta vacia 
-        $errores ["apellido"]= "Por favor ingresa un apellido";
+    } 
+      /* usuario */
+      if(empty($usuario)){
+        $errores ["usuario"]= "Por favor ingresa un usuario";
     }
       /* correo */
-      if(!empty($email)){ // si la variable apellido no esta vacia aplico filtros 
+      if(!empty($email)){ // si la variable usuario no esta vacia aplico filtros 
         $email = filter_var($email,FILTER_SANITIZE_EMAIL); // aplica filtro (remover signos y caracteres especiales)
         if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
             $errores["email"]="Por favor ingresar un correo valido";
         }
-    } else { // si la variable apellido esta vacia 
+    } else { // si la variable usuario esta vacia 
         $errores ["email"]= "Por favor ingresa un correo";
     }
 
       /* contraseña */
-      if(!empty($contraseña)){ // si la variable contraseña no esta vacia aplico filtros 
-         if($contraseña <= 8){
-            $errores["contraseña-1"]="Debe tener 8 caracteres o mas";
-         } 
+      if(!empty($contraseña) and !empty($contraseña2) ){ // si la variable contraseña no esta vacia aplico filtros 
+
          if($contraseña2!=$contraseña) {
             $errores ["contraseña-2"]="Las contraseñas no coinciden";
         }
+        if(strlen($contraseña) < 8){
+            $errores["contraseña-1"]="Debe tener 8 caracteres o mas";
+         } 
 
     } else { // si la variable contraseña esta vacia 
         $errores ["contraseña-0"]= "Por favor ingresa una contraseña";
     }    
+    
+    if(empty($errores)){  
+
+        $contraseña = hash('sha512', $contraseña);
+        include 'clases/BaseDeDatos.php';
+        $bd= new BaseDeDatos();
+
+        $usuarioNuevo = new Usuario($nombre,$usuario,$email,$contraseña);
+        $usuarioNuevo->activo=true;
+        $usuarioId = $bd->registrarUsuario($usuarioNuevo);
+
+        session_start();
+        $_SESSION["user_id"]=$usuarioId;
+
+        header("location:index.php");
+
+    }
+    else{
+          echo "Hubo un error al registrarse. ";
+    }
     
 }
 
@@ -76,16 +95,17 @@ if(isset($_POST['submit'])){
      <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="form-register">
      <h2 class="form-titulo">Registrate</h2>
      <div class="contenedor-inputs">
+
      <input type="text" name="nombre" placeholder="Nombre" value="<?=$nombre ?>" class="input-100">
 
      <?php if(!empty($errores["nombre"])): // si la variable errores tiene contenido muestra el tipo de error?> 
         <div class="error"><?php echo $errores["nombre"]; ?> </div>
      <?php endif; ?>
 
-     <input type="text" name="apellido" placeholder="Apellido" value="<?=$apellido?>" class="input-100">
+     <input type="text" name="usuario" placeholder="usuario" id="usuario" value="<?=$usuario?>" class="input-100">
 
-     <?php if(!empty($errores["apellido"])): // si la variable errores tiene contenido muestra el tipo de error?> 
-        <div class="error"><?php echo $errores["apellido"]; ?> </div>
+     <?php if(!empty($errores["usuario"])): // si la variable errores tiene contenido muestra el tipo de error?> 
+        <div class="error"><?php echo $errores["usuario"]; ?> </div>
      <?php endif; ?>
 
      <input type="email" name="email" placeholder="Email" value="<?=$email?>" class="input-100">
@@ -96,15 +116,19 @@ if(isset($_POST['submit'])){
 
      <input type="password" name="password" placeholder="contraseña" class="input-100">
      <input type="password" name="password-verify" placeholder="Repetir contraseña" class="input-100">
+
      <?php if(!empty($errores["contraseña-1"])): // si la variable errores tiene contenido muestra el tipo de error?> 
-        <div class="error"><?php echo $errores["contraseña-1"]; ?> </div>
+        <div class="error"><?php echo $errores["contraseña-1"]; ?> </div><br>
      <?php endif; ?>
+
      <?php if(!empty($errores["contraseña-0"])): // si la variable errores tiene contenido muestra el tipo de error?> 
         <div class="error"><?php echo $errores["contraseña-0"]; ?> </div><br>
      <?php endif; ?>
+
      <?php if(!empty($errores["contraseña-2"])): // si la variable errores tiene contenido muestra el tipo de error?> 
-        <div class="error"><?php echo $errores["contraseña-2"]; ?> </div>
+        <div class="error"><?php echo $errores["contraseña-2"]; ?> </div><br>
      <?php endif; ?>
+
      <input type="submit" name="submit" class="btn-enviar" value="CREAR CUENTA">
      <p class="form-link">¿Ya tenes una cuenta? <a href="login.php">Entrar</a></p>
      </div>

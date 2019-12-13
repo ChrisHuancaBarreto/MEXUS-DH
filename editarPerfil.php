@@ -1,12 +1,41 @@
-<?php  session_start();
+<?php 
 
-if(isset($_SESSION["user_id"]) && $_SESSION["user_id"] === true){
-    header("location: bienvenido.php");
-    exit;
+session_start();
+
+include 'clases/BaseDeDatos.php';
+include 'clases/Usuario.php';
+
+$bd = new BaseDeDatos();
+$usuario = $bd->traerUsuario($_SESSION["user_id"]);
+
+if($_POST){
+    $nombre=$_POST["nombre"];
+    $email=$_POST["email"];
+      /* nombre */
+    if(empty($nombre)){ // si la variable nombre no esta vacia aplico filtros 
+        $errores["nombre"]= "Por favor ingresa un nombre";
+    } 
+      /* correo */
+      if(!empty($email)){ // si la variable usuario no esta vacia aplico filtros 
+        $email = filter_var($email,FILTER_SANITIZE_EMAIL); // aplica filtro (remover signos y caracteres especiales)
+        if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+            $errores["email"]="Por favor ingresar un correo valido";
+        }
+    } else { // si la variable usuario esta vacia 
+        $errores ["email"]= "Por favor ingresa un correo";
+    }
+
+    if(empty($errores)){  
+        $bd->actualizarUsuario($nombre,$email);
+         header("location:miPerfil.php");
+    }
+    
 }
 
-
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,14 +61,17 @@ if(isset($_SESSION["user_id"]) && $_SESSION["user_id"] === true){
 </div> 
      </header>
      <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="form-register">
-     <h2 class="form-titulo">Iniciar Sesión</h2>
+     <h2 class="form-titulo">Mis datos</h2>
      <div class="contenedor-inputs">
+
+     <label for="nombre" class="labels-name">Nombre</label>
+     <input type="nombre" name="nombre" placeholder="nombre"class="input-100" value="<?= $usuario["nombre_completo"]?>" >
+
      <label for="email" class="labels-name">E-mail</label>
-     <input type="email" name="email" placeholder="Email"class="input-100">
-     <label for="password" class="labels-name">Contraseña</label>
-     <input type="password" name="password" placeholder="contraseña" class="input-100">
-     <input type="submit" class="btn-enviar" value="Ingresar">
-     <p class="form-link">¿No tenes una cuenta? <a href="register.php">Registrate.</a></p>
+     <input type="email" name="email" placeholder="Email"class="input-100" value="<?= $usuario["email"]?>" >
+
+     <input type="submit" class="btn-enviar" value="GUARDAR">
+
      </div>
 
 
