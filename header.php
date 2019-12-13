@@ -80,7 +80,7 @@ if(isset($_SESSION["user_id"])){ //Si no ha iniciado sesión redirecciona a inde
             <h5><i class="fas fa-user"></i> Acceder</h5>
           </button>
           <div class="dropdown-menu" style="background: black;z-index: auto;" aria-labelledby="dropdownMenuButton" >
-            <a class="dropdown-item" style="color: white;background: transparent;" href="login.php">Iniciar Sesión</a>
+            <a class="dropdown-item" style="color: white;background: transparent;" href="register.php">Iniciar Sesión</a>
             <a class="dropdown-item" style="color:white; background: transparent;" href="register.php">Registrarse</a>
           </div>
       </div>
